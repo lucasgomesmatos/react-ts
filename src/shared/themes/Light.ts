@@ -1,5 +1,6 @@
 import { createTheme } from "@mui/material"
-import { cyan, yellow } from "@mui/material/colors"
+import { blue, cyan, yellow } from "@mui/material/colors"
+import { typography } from "@mui/system"
 
 export const LightTheme = createTheme({
   palette: {
@@ -19,5 +20,19 @@ export const LightTheme = createTheme({
       default: '#f7f6f3',
       paper: '#fff',
     }
+  },
+  typography: {
+    fontFamily: [
+      '-apple-system',
+      'BlinkMacSystemFont',
+      '"Segoe UI"',
+      'Roboto',
+      '"Helvetica Neue"',
+      'Arial',
+      'sans-serif',
+      '"Apple Color Emoji"',
+      '"Segoe UI Emoji"',
+      '"Segoe UI Symbol"',
+    ].join(','),
   }
 })
