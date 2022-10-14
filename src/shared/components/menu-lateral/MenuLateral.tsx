@@ -2,13 +2,17 @@ import {
   Avatar,
   Divider,
   Drawer,
+  Icon,
   List,
+  ListItemButton,
+  ListItemIcon,
+  ListItemText,
   useMediaQuery,
   useTheme,
 } from '@mui/material';
 import { Box } from '@mui/system';
 import React from 'react';
-import { useDrawerContext } from '../../contexts';
+import { useAppThemeContext, useDrawerContext } from '../../contexts';
 import { ListItemLink } from './ListItemLink';
 
 interface IMenuLateral {
@@ -20,6 +24,7 @@ export const MenuLateral: React.FC<IMenuLateral> = ({ children }) => {
   const smDown = useMediaQuery(theme.breakpoints.down('sm'));
 
   const { isDrawerOpen, toggleDrawerOpen, drawerOptions } = useDrawerContext();
+  const { toggleTheme } = useAppThemeContext();
 
   return (
     <>
@@ -67,6 +72,16 @@ export const MenuLateral: React.FC<IMenuLateral> = ({ children }) => {
                   onClick={smDown ? toggleDrawerOpen : undefined}
                 />
               ))}
+            </List>
+          </Box>
+          <Box sx={{}}>
+            <List component="nav">
+              <ListItemButton onClick={toggleTheme}>
+                <ListItemIcon>
+                  <Icon>dark_mode</Icon>
+                </ListItemIcon>
+                <ListItemText primary={'Alternar tema'} />
+              </ListItemButton>
             </List>
           </Box>
         </Box>
