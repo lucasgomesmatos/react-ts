@@ -10,7 +10,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import { Box } from '@mui/system';
 import React from 'react';
 
-interface IBarraDeFerramentas {
+interface IFerramentasDaListagem {
   textoDaBusca?: string;
   mostrarInputBusca?: boolean;
   aoMudarTextoDeBusca?: (novoTexTo: string) => void;
@@ -19,7 +19,7 @@ interface IBarraDeFerramentas {
   aoClicarEmNovo?: () => void;
 }
 
-export const BarraDeFerramentas: React.FC<IBarraDeFerramentas> = ({
+export const FerramentasDaListagem: React.FC<IFerramentasDaListagem> = ({
   textoDaBusca = '',
   mostrarInputBusca = false,
   aoMudarTextoDeBusca,
