@@ -100,6 +100,7 @@ export const FerramentaDeDetalhe: React.FC<IFerramentaDeDetalhePros> = ({
           Apagar
         </ButtonCustom>
       )}
+
       {mostrarBotaoApagarCarregando && (
         <Skeleton sx={{ width: '110px', height: '60px' }} />
       )}
@@ -109,16 +110,25 @@ export const FerramentaDeDetalhe: React.FC<IFerramentaDeDetalhePros> = ({
           {textoBotaoNovo}
         </ButtonCustom>
       )}
+
       {mostrarBotaoNovoCarregando && !smDown && (
         <Skeleton sx={{ width: '110px', height: '60px' }} />
       )}
-      <Divider variant="middle" orientation="vertical" />
+
+      {mostrarBotaoVoltar &&
+        (mostrarBotaoNovo ||
+          mostrarBotaoApagar ||
+          mostrarBotaoSalvar ||
+          mostrarBotaoSalvarEFechar) && (
+          <Divider variant="middle" orientation="vertical" />
+        )}
 
       {mostrarBotaoVoltar && !mostrarBotaoVoltarCarregando && (
         <ButtonCustom icon="arrow_back" onClick={aoClicarEmVoltar}>
           Voltar
         </ButtonCustom>
       )}
+
       {mostrarBotaoVoltarCarregando && (
         <Skeleton sx={{ width: '110px', height: '60px' }} />
       )}
