@@ -10,6 +10,8 @@ import SearchIcon from '@mui/icons-material/Search';
 import { Box } from '@mui/system';
 import React from 'react';
 
+import { Environment } from '../../environment';
+
 interface IFerramentasDaListagem {
   textoDaBusca?: string;
   mostrarInputBusca?: boolean;
@@ -48,7 +50,7 @@ export const FerramentasDaListagem: React.FC<IFerramentasDaListagem> = ({
           value={textoDaBusca}
           onChange={(e) => aoMudarTextoDeBusca?.(e.target.value)}
           size="small"
-          placeholder="Pesquisar..."
+          placeholder={Environment.INPUT_DE_BUSCA}
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
