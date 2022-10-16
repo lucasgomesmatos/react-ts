@@ -5,9 +5,12 @@ import {
   Icon,
   Paper,
   Skeleton,
+  Typography,
+  useMediaQuery,
   useTheme,
 } from '@mui/material';
 import React from 'react';
+import { ButtonCustom } from './ButtonCustom';
 
 interface IFerramentaDeDetalhePros {
   textoBotaoNovo?: string;
@@ -52,6 +55,9 @@ export const FerramentaDeDetalhe: React.FC<IFerramentaDeDetalhePros> = ({
   aoClicarEmSalvarEFechar,
 }) => {
   const theme = useTheme();
+  const smDown = useMediaQuery(theme.breakpoints.down('sm'));
+  const mdDown = useMediaQuery(theme.breakpoints.down('md'));
+
   return (
     <Box
       sx={{
@@ -66,76 +72,55 @@ export const FerramentaDeDetalhe: React.FC<IFerramentaDeDetalhePros> = ({
       component={Paper}
     >
       {mostrarBotaoSalvar && !mostrarBotaoSalvarCarregando && (
-        <Button
-          color="primary"
+        <ButtonCustom
+          icon="save"
           variant="contained"
-          disableElevation
           onClick={aoClicarEmSalvar}
-          startIcon={<Icon>save</Icon>}
         >
           Salvar
-        </Button>
+        </ButtonCustom>
       )}
 
       {mostrarBotaoSalvarCarregando && (
         <Skeleton sx={{ width: '110px', height: '60px' }} />
       )}
 
-      {mostrarBotaoSalvarEFechar && !mostrarBotaoSalvarEFecharCarregando && (
-        <Button
-          color="primary"
-          variant="outlined"
-          disableElevation
-          onClick={aoClicarEmSalvarEFechar}
-          startIcon={<Icon>save</Icon>}
-        >
-          Salvar e voltar
-        </Button>
-      )}
-      {mostrarBotaoSalvarEFecharCarregando && (
+      {mostrarBotaoSalvarEFechar &&
+        !mostrarBotaoSalvarEFecharCarregando &&
+        !smDown &&
+        !mdDown && (
+          <ButtonCustom icon="save" onClick={aoClicarEmSalvarEFechar}>
+            Salvar e voltar
+          </ButtonCustom>
+        )}
+
+      {mostrarBotaoSalvarEFecharCarregando && !smDown && !mdDown && (
         <Skeleton sx={{ width: '180px', height: '60px' }} />
       )}
 
       {mostrarBotaoApagar && !mostrarBotaoApagarCarregando && (
-        <Button
-          color="primary"
-          variant="outlined"
-          disableElevation
-          onClick={aoClicarEmApagar}
-          startIcon={<Icon>delete</Icon>}
-        >
+        <ButtonCustom icon="delete" onClick={aoClicarEmApagar}>
           Apagar
-        </Button>
+        </ButtonCustom>
       )}
       {mostrarBotaoApagarCarregando && (
         <Skeleton sx={{ width: '110px', height: '60px' }} />
       )}
-      {mostrarBotaoNovo && !mostrarBotaoNovoCarregando && (
-        <Button
-          color="primary"
-          variant="outlined"
-          disableElevation
-          onClick={aoClicarEmNovo}
-          startIcon={<Icon>add</Icon>}
-        >
+
+      {mostrarBotaoNovo && !mostrarBotaoNovoCarregando && !smDown && (
+        <ButtonCustom icon="add" onClick={aoClicarEmNovo}>
           {textoBotaoNovo}
-        </Button>
+        </ButtonCustom>
       )}
-      {mostrarBotaoNovoCarregando && (
+      {mostrarBotaoNovoCarregando && !smDown && (
         <Skeleton sx={{ width: '110px', height: '60px' }} />
       )}
       <Divider variant="middle" orientation="vertical" />
 
       {mostrarBotaoVoltar && !mostrarBotaoVoltarCarregando && (
-        <Button
-          color="primary"
-          variant="outlined"
-          disableElevation
-          onClick={aoClicarEmVoltar}
-          startIcon={<Icon>arrow_back</Icon>}
-        >
+        <ButtonCustom icon="arrow_back" onClick={aoClicarEmVoltar}>
           Voltar
-        </Button>
+        </ButtonCustom>
       )}
       {mostrarBotaoVoltarCarregando && (
         <Skeleton sx={{ width: '110px', height: '60px' }} />
