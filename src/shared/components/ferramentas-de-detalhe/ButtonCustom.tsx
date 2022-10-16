@@ -1,4 +1,10 @@
-import { Button, Icon, Typography } from '@mui/material';
+import {
+  Button,
+  Icon,
+  Typography,
+  useMediaQuery,
+  useTheme,
+} from '@mui/material';
 
 interface IButtonCustomProps {
   children?: string;
@@ -13,6 +19,9 @@ export const ButtonCustom: React.FC<IButtonCustomProps> = ({
   icon,
   variant = 'outlined',
 }) => {
+  const theme = useTheme();
+  const smDown = useMediaQuery(theme.breakpoints.down('sm'));
+
   return (
     <Button
       onClick={onClick}
@@ -22,6 +31,7 @@ export const ButtonCustom: React.FC<IButtonCustomProps> = ({
       startIcon={<Icon>{icon}</Icon>}
     >
       <Typography
+        fontSize={smDown ? 10 : 14}
         variant="button"
         whiteSpace="nowrap"
         textOverflow="ellipsis"

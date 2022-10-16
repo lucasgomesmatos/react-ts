@@ -1,11 +1,8 @@
 import {
   Box,
-  Button,
   Divider,
-  Icon,
   Paper,
   Skeleton,
-  Typography,
   useMediaQuery,
   useTheme,
 } from '@mui/material';

@@ -24,6 +24,7 @@
             "error",
             2
         ],
+        "no-tabs": 0,
         "linebreak-style": [
             "error",
             "windows"
@@ -37,6 +38,7 @@
             "always"
         ],
         "react/prop-types": "off",
-        "react/react-in-jsx-scope": "off"
+        "react/react-in-jsx-scope": "off",
+        
     }
 }
