@@ -87,7 +87,7 @@ export const FerramentaDeDetalhe: React.FC<IFerramentaDeDetalhePros> = ({
         !smDown &&
         !mdDown && (
           <ButtonCustom icon="save" onClick={aoClicarEmSalvarEFechar}>
-            Salvar e voltar
+            Salvar e fechar
           </ButtonCustom>
         )}
 
