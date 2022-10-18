@@ -39,8 +39,41 @@ const getAll = async (page = 1, filter = ''): Promise<TPessoasComTotalCount | Er
     return new Error((error as { message: string }).message || 'Erro ao listar os registros');
   }
 };
-const getById = async (): Promise<any> => { }
-const create = async (): Promise<any> => { }
+const getById = async (id: number): Promise<IListagemPessoa | Error> => {
+  try {
+    const urlRelativa = `/pessoas/${id}`
+
+    const { data, headers } = await Api.get(urlRelativa);
+
+    if (data) {
+      return data.json();
+    }
+
+    return new Error('Error ao listar pessoa pelo id.');
+  } catch (error) {
+    console.error(error);
+    return new Error((error as { message: string }).message || 'Error ao listar pessoa pelo id.');
+  }
+
+}
+
+const create = async (body: IDetalhePessoa): Promise<IDetalhePessoa> => {
+  try {
+    const urlRelativa = `/pessoas}`
+
+    const { data, headers } = await Api.post(urlRelativa, body);
+
+    if (data) {
+      return data.json();
+    }
+
+    return new Error('Error ao listar pessoa pelo id.');
+  } catch (error) {
+    console.error(error);
+    return new Error((error as { message: string }).message || 'Error ao listar pessoa pelo id.');
+  }
+}
+
 const update = async (): Promise<any> => { }
 const deleteById = async (): Promise<any> => { }
 
