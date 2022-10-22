@@ -1,6 +1,6 @@
 import { useCallback, useRef } from "react"
 
-export const useDebounce = (delay = 300, notDelayFirstTime = true) => {
+export const useDebounce = (delay = 1000, notDelayFirstTime = true) => {
   const isFirstTime = useRef(notDelayFirstTime);
   const debouncing = useRef<number | undefined>();
 
