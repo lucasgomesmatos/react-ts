@@ -2,8 +2,9 @@
   "pessoas": [
     {
       "id": 1,
-      "nome": "Lucas",
-      "sobrenome": "Gomes"
+      "email": "lucas@gmail.com",
+      "cidadeId": "Novo Oriente",
+      "nomeCompleto": "Lucas Gomes"
     }
   ]
 }
