@@ -1,4 +1,13 @@
 import React, { useEffect, useMemo, useState } from 'react';
+import {
+  Paper,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+} from '@mui/material';
 import { useSearchParams } from 'react-router-dom';
 import { FerramentasDaListagem } from '../../shared/components';
 import { useDebounce } from '../../shared/hooks';
@@ -7,6 +16,7 @@ import {
   IListagemPessoa,
   PessoasService,
 } from '../../shared/services/api/pessoas/PessoasService';
+import { margin } from '@mui/system';
 
 export const ListagemDePessoas: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -15,8 +25,6 @@ export const ListagemDePessoas: React.FC = () => {
   const [rows, setRows] = useState<IListagemPessoa[]>([]);
   const [totalCount, setTotalCount] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
-
-  console.log(isLoading);
 
   const busca = useMemo(() => {
     return searchParams.get('busca') || '';
@@ -50,6 +58,31 @@ export const ListagemDePessoas: React.FC = () => {
           }
         />
       }
-    ></LayoutBaseDePagina>
+    >
+      <TableContainer
+        component={Paper}
+        variant="outlined"
+        sx={{ m: 1, width: 'auto' }}
+      >
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableCell>Ações</TableCell>
+              <TableCell>Nome Completo</TableCell>
+              <TableCell>Email</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {rows.map((row) => (
+              <TableRow key={row.id}>
+                <TableCell></TableCell>
+                <TableCell>{row.nomeCompleto}</TableCell>
+                <TableCell>{row.email}</TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+    </LayoutBaseDePagina>
   );
 };
