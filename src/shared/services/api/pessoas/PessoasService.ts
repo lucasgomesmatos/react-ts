@@ -48,8 +48,8 @@ const getById = async (id: number): Promise<IDetalhePessoa | Error> => {
     if (data) {
       return data;
     }
-
     return new Error('Error ao consultar o registro.');
+
   } catch (error) {
     console.error(error);
     return new Error((error as { message: string }).message || 'Error ao consultar o registro.');
